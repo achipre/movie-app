@@ -1,0 +1,11 @@
+{
+  "name": "movie-app",
+  "version": "1.0.0",
+  "description": "App to preview movies",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "@achipre",
+  "license": "MIT"
+}

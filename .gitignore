@@ -200,3 +200,4 @@ dist
 
 # variables secret
 ./src/secret.js
+secret.js
