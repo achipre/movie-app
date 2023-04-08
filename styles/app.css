@@ -14,14 +14,24 @@
 }
 body{
   min-width: 220px;
-  padding: 1.6rem;
   position: relative;
+  background-color: transparent;
 }
 /* Header */
 
 header{
-  margin: 0 auto;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
   max-width: 1200px;
+  background: linear-gradient(rgb(0, 0, 0) 45%, rgba(255, 255, 255, 0) 100%);
+  padding: 16px;
+  z-index: 5;
+}
+header .home{
+  text-decoration: none;
 }
 header h1{
   font-size: 1.8rem;
@@ -47,6 +57,7 @@ header h1 span{
   padding-bottom: 1.6rem;
   max-width: 1200px;
   margin: 0 auto;
+  background-color: transparent;
 }
 .search .search-title {
   display: flex;
@@ -101,17 +112,35 @@ section span svg path{
 main {
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 4;
+  padding: 8.5rem 1.6rem 0;
 }
-main .tendencias{
+.favorites {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 4;
+  padding: 0 1.6rem;
+}
+/* main .tendencias{
   padding-bottom: 2rem;
-}
+} */
 main .tendencias .tendencias-title{
+  position: relative;
   display: flex;
-  padding-bottom: 1.6rem;
+  padding: 1.6rem 0 1.6rem;
   justify-content: space-between;
   align-items: center;
 }
-main section header h2{
+
+
+
+/* main .tendencias .tendencias-article{
+  padding-top: 6rem;
+} */
+main section header h2,
+.movie__detalle-text .movie__detalle--similar .movie__detalle--similar-title{
   font-size: 1.4rem;
   color: var(--color-secondary);
 }
@@ -126,35 +155,115 @@ main section header button{
   background-color: var(--color-tertiary);
   border-radius: .8rem;
 }
-main section article {
+main section article,
+.movie__detalle--similar .movie__detalle--similar-movie,
+.favorites .favorites-list, .favorites-list {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  overflow-x: scroll;
   gap: 1rem;
 }
-main section article img{
+main section article img, .favorites-container .movie-img, .movie__detalle--similar-movie .movie-container .movie-img, .movie-container .movie-container img,  .favorites-list .movie-container .movie-container img, .favorites-list .movie-container .movie-img{
   width: 100%;
+  min-height: 132px;
   max-width: 220px;
   border-radius: 1rem;
+  background-color: #272727;
   
 }
-main .tendencias .tendencias-article .movie-container{
-  min-width: 148px;
+main .tendencias .tendencias-article .movie-container,
+.movie__detalle--similar .movie__detalle--similar-movie .movie-container,
+.favorites-list .movie-container
+{
+  width: 100%;
   margin: 0 auto;
 }
-main .tendencias .tendencias-article .movie-container .movie-img{
-  width: 100%;
+.favorites-list .movie-container{
+  width: 170px;
+  margin: 0;
 }
+main .tendencias .tendencias-article .movie-container-loading, .movie-container-loading {
+  min-width: 170px;
+  height: 256px;
+  background-color: #272727;
+  border-radius: 1rem;
+  animation: skelleton-loading 1s infinite;
+}
+main .tendencias .tendencias-article .movie-container-loading:nth-child(2) {
+  animation-delay: 0.2s;
+}
+main .tendencias .tendencias-article .movie-container-loading:nth-child(3), .movie-container-loading:nth-child(3) {
+  animation-delay: 0.4s;
+}
+main .tendencias .tendencias-article .movie-container-loading:nth-child(4), .movie-container-loading:nth-child(4) {
+  animation-delay: 0.6s;
+}
+main .tendencias .tendencias-article .movie-container-loading:nth-child(5), .movie-container-loading:nth-child(5) {
+  animation-delay: 0.8s;
+} 
+main .tendencias .tendencias-article .movie-container-loading:nth-child(6), .movie-container-loading:nth-child(6) {
+  animation-delay: 1s;
+}
+main .tendencias .tendencias-article .movie-container-loading:nth-child(7), .movie-container-loading:nth-child(7) {
+  animation-delay: 1.2s;
+}
+@keyframes skelleton-loading {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+}
+main .tendencias .tendencias-article .movie-container .movie-img,
+.movie__detalle--similar .movie__detalle--similar-movie .movie-container .movie-img, .favorites-container .movie-img, .favorites-list .movie-container .movie-img{
+  width: 170px;
+  min-width: 170px;
+  min-height: 255px;
+  background-color:#272727;
+}
+main .main-search, .main-tendencia, .main-category{
+  padding-top: 2rem;
+}
+main .main-search .main-search-movies, .main-tendencia-movies, .main-category-movies{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+main .main-search .main-search-movies .movie-container, .movie-container{
+  width: 47%;
+}
+main .main-search .main-search-movies .movie-container-loading {
+  min-width: 120px;
+  width: 47%;
+  max-width: 220px ;
+  background-color: var(--color-secondary);border-radius: 1rem;
+  animation: skelleton-loading 1s infinite;
+}
+
+
+
+
 /* Categoria */
 /* Title */
 .categoria {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 1.6rem 1.6rem;
+  position: relative;
 }
-.categoria .categoria-title {
-  padding-bottom: 1.6rem;
+.categoria .categoria-title, .favorites .favorites-title {
+  padding: 1.6rem 0;
+  position: relative;
 }
-.categoria .categoria-title h2 {
+.categoria .categoria-title h2, .favorites .favorites-title h2 {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  height: 3rem;
   font-size: 1.4rem;
   color: var(--color-secondary);
 }
@@ -162,36 +271,66 @@ main .tendencias .tendencias-article .movie-container .movie-img{
   display: flex;
   color: var(--color-secondary);
 }
-.categoria .categoria-list .categories-container{
+.categoria .categoria-list .categories-container,
+.movie__detalle-text .movie__detalle--genres .movie__detalle--genre-container{
+  width: 100%;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 1rem;
+  row-gap: 1rem;
 }
-.categoria .categoria-list .categories-container li {
+.categoria .categoria-list .categories-container li,
+.movie__detalle-text .movie__detalle--genres .movie__detalle--genre-container .container-category {
   cursor: pointer;
   width: 45%;
   display: flex;
-  height: 3rem;
   align-items: center;
   flex-wrap: wrap;
   padding-left: 1rem;
   list-style: none;
-  border-radius: .4rem;
-  
+  border-radius: .4rem; 
 }
-.categoria .categoria-list .categories-container li p{
+.categoria .categoria-list .container-category-loading {
+  min-width: 45%;
+  height: 23px;
+  background-color: #272727;
+  border-radius: .4rem;
+  animation: skelleton-loading 1s infinite;
+}
+.categoria .categoria-list .container-category-loading:nth-child(3) {
+  animation-delay: .2s;
+}
+.categoria .categoria-list .container-category-loading:nth-child(4) {
+  animation-delay: .2s;
+}
+.categoria .categoria-list .container-category-loading:nth-child(5) {
+  animation-delay: .4s;
+}
+.categoria .categoria-list .container-category-loading:nth-child(6) {
+  animation-delay: .4s;
+}
+.categoria .categoria-list .container-category-loading:nth-child(7) {
+  animation-delay: .6s;
+}
+.categoria .categoria-list .container-category-loading:nth-child(8) {
+  animation-delay: .6s;
+}
+.categoria .categoria-list .container-category-loading:nth-child(9) {
+  animation-delay: .8s;
+}
+.categoria .categoria-list .container-category-loading:nth-child(10) {
+  animation-delay: .8s;
+}
+.categoria .categoria-list .categories-container li p,
+.movie__detalle-text .movie__detalle--genres .movie__detalle--genre-container .container-category p{
   width: 100%;
-  height: 3rem;
-  margin: auto 0;
+  height: 100%;
+  padding: 0.5rem;
   font-size: 1.2rem;
   margin-left: .4rem;
-  padding: 1rem;
-  border-radius: 0 .4rem .4rem 0;
+  border-radius: 0 .3rem .3rem 0;
 }
 .movie__detalle{
-  max-width: 1200px;
-  margin: 0 auto;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -201,16 +340,76 @@ main .tendencias .tendencias-article .movie-container .movie-img{
 }
 .movie__detalle--container-img{
   background: linear-gradient(90deg, rgba(0, 0, 0, 1) 50%, rgba(255, 255, 255, 0) 100%);
+
 }
 .movie__detalle .movie__detalle-img{
   height: 100vh;
-  max-width: 960px;
-  margin-left: auto ;
-  background-image: url(https://www.themoviedb.org/t/p/w440_and_h660_face//kUAG4ZQcsNbRyiPyAr3hLdsVgAq.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
+
+.movie__detalle-text{
+  max-width: 1200px;
+  margin: 80vh auto 0;
+  border-radius: 3rem 3rem 0 0;
+  box-shadow: 0px 0px 50px 20px #000;
+}
+.movie__detalle-text .movie__detalle--text-header{
+  padding: 2.4rem;
+  display: flex;
+  color: var(--color-secondary);
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 3rem;
+}
+.movie__detalle-text .movie__detalle--text-header .movie__detalle--text-header-title{
+  font-size: 1.8rem;
+  font-weight: 700;
+  
+}
+.movie__detalle-text .movie__detalle--text-header .movie__detalle--text-header-raiting{
+  display: flex;
+  align-items: center;
+  padding: .5rem;
+  gap: 1rem;
+}
+.movie__detalle-text .movie__detalle--text-header .movie__detalle--text-header-raiting .stars{
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+.movie__detalle-text .movie__detalle--text-header .movie__detalle--text-header-raiting svg{
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.movie__detalle-text .movie__detalle--description, .movie__detalle--genres, .movie__detalle--similar{
+  padding: 2.4rem;
+}
+.movie__detalle-text .movie__detalle--description .movie__detalle--description-text{
+  color: var(--color-secondary);
+  font-size: 1.4rem;
+}
+.movie__detalle-text .movie__detalle--genres .movie__detalle--genre-container{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.movie__detalle-text .movie__detalle--genres .movie__detalle--genre-container li{
+  width: 45%;
+  color: var(--color-secondary);
+  font-size: 1.2rem;
+}
+.movie__detalle-text .movie__detalle--similar .movie__detalle--similar-title {
+  padding: 1.6rem 0 1.6rem;
+  font-weight: 500;
+}
+
+
 
 #id28{
   background-color: #FFEA20;
@@ -328,4 +527,34 @@ main .tendencias .tendencias-article .movie-container .movie-img{
 } 
 .inactive{
   display: none !important
+}
+.active-fav{
+  z-index: 1 !important
+}
+@media (min-width: 500px) {
+  .main-category-movies, .main-tendencia-movies,
+    .main-category-movies, main .main-search .main-search-movies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  .main-category-movies .movie-container, .movie-container, main .main-search .main-search-movies .movie-container {
+    width: 220px;
+  }
+  .categoria .categoria-list .categories-container {
+    justify-content: flex-start;
+  }
+  .categoria .categoria-list .categories-container li {
+    width: 25%;
+  }
+}
+@media (min-width: 900px) {
+  .categoria .categoria-list .categories-container li {
+    width: 20%;
+  }
+}
+@media (min-width: 1200px) {
+  .categoria .categoria-list .categories-container li {
+    width: 16.6%;
+  }
 }
